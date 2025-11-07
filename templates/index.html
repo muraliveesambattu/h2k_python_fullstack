@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask CRUD App</title>
+</head>
+<body>
+    <h2>Hello To FLASK CRUD APP</h2>
+    <a href="/add">➕ Add New User</a>
+    <hr>
+
+    <ul>
+        {% for user in users %}
+            <li>
+                <strong>{{ user.name }}</strong> — {{ user.email }}
+                [<a href="/edit/{{ user.id }}">Edit</a> |
+                 <a href="/delete/{{ user.id }}">Delete</a>]
+            </li>
+        {% else %}
+            <li>No users found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
