@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo">
+
+    </div>
+    <script>
+        // Creating An Object in Literal Way 
+        var person = {
+            fname: "Robin",
+            lname: "KK",
+            email: "robin@gmail.com"
+        };
+
+        // Creating An Object with Built in Constructor 
+
+        var student = new Object({ fname: "Jo", lname: "RR", email: "jo@gmail.com" });
+
+        console.log(student);
+
+        
+        var personData = "";
+        for (a in person) {
+            // console.log(a)
+            // console.log(person[a])
+            personData = personData + a + " : " + person[a] + "<br/>"
+            // console.log(a + " : "+person[a])
+        }
+        document.getElementById("demo").innerHTML = personData
+    </script>
+</body>
+
+</html>

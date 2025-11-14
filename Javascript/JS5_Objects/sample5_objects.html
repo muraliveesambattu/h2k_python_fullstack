@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Student {
+            constructor(fname, lname, email) {
+                this.fname = fname;
+                this.lname = lname;
+                this.email = email
+            }
+        }
+
+        var student1 = new Student("Kiran", "kumar", "kiran@gmail.com");
+
+        console.log(student1);
+
+        // Object Can be Created In 4 ways 
+        // 1. Literal of Creating An Object 
+        var student = {
+            fname: "Daniel",
+            lname: "Joseph",
+            email: "daniel@gmail.com",
+            state: "USA"
+        }
+
+        // 2. Creating An Object with Build In Construnctor 
+
+        var student = new Object({ fname: "Jo", lname: "RR", email: "jo@gmail.com" });
+
+        // 3. Creating an Object with Custom Consutuctor 
+
+        function User(fname, lname, email) {
+            this.fname = fname;
+            this.lname = lname;
+            this.email = email;
+        }
+
+        var user1 = new User("kk", "mm", "kk@gmail.com");
+
+        // 4 . Creating an Object with Class 
+
+        class Student {
+            constructor(fname, lname, email) {
+                this.fname = fname;
+                this.lname = lname;
+                this.email = email
+            }
+        }
+
+        var student1 = new Student("Kiran", "kumar", "kiran@gmail.com");
+
+    </script>
+</body>
+
+</html>

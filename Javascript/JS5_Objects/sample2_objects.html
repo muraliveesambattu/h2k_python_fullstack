@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script>
+        var student = {
+            fname: "Daniel",
+            lname: "Joseph",
+            email: "daniel@gmail.com",
+            state: "USA"
+        }
+
+        // document.getElementById("demo").innerHTML = "Student First Name is : " + student.fname
+        //     + " <br/> Student Last Name is : " + student.lname
+        //     + " <br/> Student Email  is : " + student.email
+        //     + " <br/> Student State is : " + student.state
+
+
+        // To loop through Given Object 
+        var results = "";
+
+        for (a in student) {
+            results = results + a + " : " + student[a] + "<br/>"
+        }
+        document.getElementById("demo").innerHTML = results;
+    </script>
+</body>
+
+</html>
