@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            height: 600px;
+        }
+
+        #main {
+            width: 300px;
+            height: 300px;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main"
+        onmouseover="handleEvent(event)"
+        onmouseout="handleEvent(event)"
+        onclick="handleEvent(event)"
+        onmousemove="handleEvent(event)">
+    </div>
+
+    <script>
+        function handleEvent(event) {
+
+            const box = document.getElementById("main");
+
+            switch (event.type) {
+
+                case "mouseover":
+                    box.style.background = "red";
+                    break;
+
+                case "mouseout":
+                    box.style.background = "";
+                    break;
+
+                case "click":
+                    box.style.background = "yellow";
+                    break;
+
+                case "mousemove":
+                    console.log("You are Moving the Mouse !!!");
+                    break;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

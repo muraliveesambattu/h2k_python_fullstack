@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #errorMessage {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Username</label>
+        <input type="text" name="" id="username" onkeyup="validateForm()" onfocus="validateForm()">
+        <p style="color: red;" id="errorMessage">Please Enter Username . It should be minimum 8 Characters</p>
+        <button>Submit</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            var userInput = document.getElementById("username").value;
+            console.log(userInput)
+            if (userInput.length >= 8) {
+                document.getElementById("errorMessage").style.display = "none"
+            } else {
+                document.getElementById("errorMessage").style.display = "block"
+            }
+        }
+    </script>
+</body>
+
+</html>

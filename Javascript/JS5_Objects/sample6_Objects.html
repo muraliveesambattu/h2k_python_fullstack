@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Object Literal - {}
+
+        var person = {
+            fname:"murali",
+            lname:"Krishna"
+        }
+
+        // console.log(person)
+
+        // new Object() 
+        var student1 = new Object({
+            fname:"Ram",
+            lname:"Ravi"
+        })
+
+        // console.log(student1)
+
+        // Constructor Function
+        function Employee(fname,lname){
+            this.fname = fname;
+            this.lname=lname
+        }
+        var emp1 = new Employee("Kiran","Kumar")
+        // console.log(emp1)
+
+        // Class
+        class User{
+            constructor(fname,lname){
+                this.fname=fname;
+                this.lname=lname;
+            }
+        }
+
+        var user1 = new User("Syam","Kumar")
+        // console.log(user1)
+
+        // Object.create()
+        // Allows you to create a new object from an existing object.
+
+        var user2 = Object.create(person)
+        // console.log(user2.fname)
+
+        // Factory Function
+        // A function returns an object.
+
+        function NewUser(){
+            return {
+                fname:"Raghu",
+                lname:"Ram"
+            }
+        }
+
+        var user3 = NewUser()
+
+        // console.log(user3)
+
+        // Spread / Object.assign
+        // To clone or create modified objects.
+        var user4 = Object.assign(user3)
+        // console.log(user4)
+
+        // JSON
+        // Useful for deep clone (but not for methods).
+        var objString= JSON.stringify(user4);
+        var user5 = JSON.parse(objString);
+        console.log(user5)
+        
+    </script>
+</body>
+</html>
