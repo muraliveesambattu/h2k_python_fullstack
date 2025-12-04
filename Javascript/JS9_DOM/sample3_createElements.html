@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 200px;
+            height: 150px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="myImages"></div>
+    <ul>
+
+    </ul>
+    <script>
+        // for (i = 1; i <= 10; i++) {
+        //     var myLi = document.createElement("li");
+        //     myLi.innerHTML = "Hello Text !! - " + i;
+        //     document.querySelector("ul").appendChild(myLi)
+        // }
+        var allImages = [
+            "https://www.shutterstock.com/image-photo/sun-sets-behind-mountain-ranges-600nw-2479236003.jpg",
+            "https://media.istockphoto.com/id/1550071750/photo/green-tea-tree-leaves-camellia-sinensis-in-organic-farm-sunlight-fresh-young-tender-bud.jpg?s=612x612&w=0&k=20&c=RC_xD5DY5qPH_hpqeOY1g1pM6bJgGJSssWYjVIvvoLw=",
+            "https://static.vecteezy.com/system/resources/thumbnails/049/855/271/small/nature-background-high-resolution-wallpaper-for-a-serene-and-stunning-view-photo.jpg",
+            "https://img.freepik.com/premium-photo/stunning-mountain-scenery-where-forests-rocks-meet-symphony-tranquility_114016-35366.jpg",
+            "https://img.freepik.com/premium-photo/mountain-with-sunset-background_1034561-2861.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAGZS-EzT0FCN6tHXc9GvEk8ioprEj8wgExgsAIru281iKJ-_jqNCpe0tekN1Wg6poVl8&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2yhqyJQ7XnzoHErymZWc11nlTpnEhhwxW_5WNeX2sX6tgLJh8z6zxjLkXF4DG0OhQQ-c&usqp=CAU",
+            "https://img.freepik.com/free-photo/beautiful-lake-mountains_395237-44.jpg?semt=ais_hybrid&w=740&q=80"
+        ]
+        for (i = 0; i < allImages.length; i++) {
+            var myImage = document.createElement("img")
+            myImage.setAttribute('src', allImages[i])
+            document.querySelector("#myImages").appendChild(myImage)
+        }
+    </script>
+</body>
+
+</html>
