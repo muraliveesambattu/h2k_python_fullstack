@@ -5,9 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #updateBtn {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
+    <form>
+        <label for="">Id : </label>
+        <input type="number" name="" id="id"> <br>
+        <label for="">Name :</label>
+        <input type="text" name="" id="name"> <br>
+        <label for="">Age :</label>
+        <input type="number" name="" id="age"> <br>
+        <label for="">City :</label>
+        <input type="text" name="" id="city"> <br>
+
+        <button type="button" onclick="handleAddUser()" id="addBtn">Add User</button>
+        <button type="button" onclick="handleUpdateUser()" id="updateBtn">Update User</button>
+        <br>
+        <hr>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>City</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
     <script>
         const users = [
             { id: 1, name: "Murali", age: 30, city: "Bangalore" },
@@ -22,10 +57,95 @@
             { id: 10, name: "Meera", age: 24, city: "Vizag" }
         ];
 
-        // Create 
-        // Read 
-        // Update 
+        // to Disaply all the Users in the Table - Read
+        function displayUsers() {
+            document.querySelector("tbody").innerHTML = "";
+            for (i = 0; i < users.length; i++) {
+                console.log(users[i])
+                var myTr = document.createElement('tr');
+                for (a in users[i]) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = users[i][a]
+                    myTr.appendChild(myTd)
+                }
+                // Adding Edit Td &  Button
+                var editTd = document.createElement("td");
+                var editButton = document.createElement("button");
+                editButton.innerHTML = "Edit User";
+                editButton.setAttribute("onclick", "handleEditUser(" + i + ")")
+                editTd.appendChild(editButton)
+                myTr.appendChild(editTd)
+
+
+                // Adding Edit Td & Button
+                var deleteTd = document.createElement("td");
+                var deleteButton = document.createElement("button");
+                deleteButton.innerHTML = "Delete User";
+                deleteButton.setAttribute("onclick", "handleDeleteUser(" + i + ")")
+                deleteTd.appendChild(deleteButton)
+                myTr.appendChild(deleteTd);
+
+                document.querySelector("tbody").appendChild(myTr)
+            }
+        };
+        displayUsers();
+        // Create User
+        function handleAddUser() {
+            var userObj = {
+                id: document.getElementById("id").value,
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                city: document.getElementById("city").value,
+            }
+            console.log(userObj)
+            users.push(userObj);
+            displayUsers();
+            clearUserForm();
+        }
+
+        // Read
+        // Update
+        var globalIndex ;
+        function handleEditUser(i) {
+            globalIndex = i;
+            console.log(users[i])
+            document.getElementById("id").value = users[i]["id"]
+            document.getElementById("name").value = users[i]["name"]
+            document.getElementById("age").value = users[i]["age"]
+            document.getElementById("city").value = users[i]["city"]
+
+            document.getElementById("addBtn").style.display = "none";
+            document.getElementById("updateBtn").style.display = "block";
+
+        }
+
+        function handleUpdateUser() {
+            var userObj = {
+                id: document.getElementById("id").value,
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                city: document.getElementById("city").value,
+            }
+            users[globalIndex] = userObj;
+            displayUsers();
+            clearUserForm();
+            document.getElementById("addBtn").style.display = "block";
+            document.getElementById("updateBtn").style.display = "none";
+        }
+
+        function clearUserForm(){
+            document.getElementById("id").value = "";
+            document.getElementById("name").value="";
+            document.getElementById("age").value="";
+            document.getElementById("city").value=""
+        }
         // Delete 
+
+        function handleDeleteUser(i) {
+            console.log("handleDeleteUser Called " + i);
+            users.splice(i, 1);
+            displayUsers()
+        }
     </script>
 </body>
 
