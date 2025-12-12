@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="getItemsFromServer()">Get Items</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Created</th>
+                <th>Description</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        var allItems = [];
+
+        function getItemsFromServer() {
+            // TO Do Any Server Communication , we use AJAX 
+            // Asynchronous Javscript And XML
+
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function () {
+                if (getData.readyState == 4 && getData.status == 200) {
+                    allItems = JSON.parse(getData.response);
+                    console.log(allItems)
+                    displayItems(allItems)
+                }
+            }
+            getData.open("GET", "http://127.0.0.1:5001/items");
+            getData.send()
+        }
+
+        function displayItems(allItems) {
+            document.querySelector("tbody").innerHTML = "";
+            allItems.forEach((item, i) => {
+                console.log(item)
+                var myTr = document.createElement("tr")
+                for (a in item) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = item[a];
+                    myTr.appendChild(myTd)
+                }
+
+                var editTd = document.createElement("td");
+                var editButton = document.createElement("button");
+                editButton.innerHTML = "Edit User";
+                editButton.setAttribute("onclick", "handleEditUser(" + i + ")")
+                editTd.appendChild(editButton)
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td");
+                var deleteButton = document.createElement("button");
+                deleteButton.innerHTML = "Delete User";
+                deleteButton.setAttribute("onclick", "handleDeleteUser(" + i + ")")
+                deleteTd.appendChild(deleteButton)
+                myTr.appendChild(deleteTd);
+
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+
+        function handleDeleteUser(i) {
+            var getData = new XMLHttpRequest();
+
+            getData.onreadystatechange = function () {
+                if (getData.readyState == 4 && getData.status == 204) {
+                    getItemsFromServer()
+                }
+            }
+            getData.open("DELETE", "http://127.0.0.1:5001/items/"+allItems[i].id);
+            getData.send()
+        }
+        getItemsFromServer()
+    </script>
+</body>
+
+</html>
